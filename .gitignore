@@ -1,0 +1,33 @@
+cat > .gitignore << 'EOF'
+# venv
+arena/
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Training artifacts
+checkpoints/
+wandb/
+runs/
+*.ckpt
+*.safetensors
+*.bin
+
+# Secrets
+.env
+*.key
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+EOF
