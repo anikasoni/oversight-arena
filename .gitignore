@@ -18,3 +18,4 @@ runs/
 Thumbs.db
 .vscode/
 .idea/
+.claude/
