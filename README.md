@@ -42,3 +42,19 @@ Single overseers exhibit instability:
 - Speed → aggressive (best but unstable)
 
 The panel aggregates diverse biases, yielding more consistent detection.
+
+## Final Results
+
+### Panel Evolution
+
+| Model | Success | Reward | Notes |
+|------|--------|--------|------|
+| Single Overseer (precision) | 0.00 | 0.00 | Too conservative |
+| Single Overseer (recall) | 0.60 | 0.55 | Noisy |
+| Single Overseer (speed) | 0.80 | 0.74 | Best single agent |
+| **Panel (majority vote)** | **~0.80** | **~0.74** | Stable baseline |
+| **Panel + disagreement signal** | **0.80** | **0.74** | Robust + principled |
+
+### Key Insight
+No single overseer is reliable across attack patterns.  
+A diverse panel stabilizes detection, and disagreement between overseers is itself a useful signal for subtle vulnerabilities.
