@@ -58,3 +58,25 @@ The panel aggregates diverse biases, yielding more consistent detection.
 ### Key Insight
 No single overseer is reliable across attack patterns.  
 A diverse panel stabilizes detection, and disagreement between overseers is itself a useful signal for subtle vulnerabilities.
+## Method
+
+We model oversight as a multi-agent decision problem with heterogeneous evaluators.
+
+Each overseer applies a distinct bias:
+- **Precision-focused**: avoids false positives
+- **Recall-focused**: aggressively detects subtle issues
+- **Speed-focused**: prioritizes early detection
+
+We aggregate decisions using:
+1. Majority voting
+2. Confidence scoring across agents
+3. Disagreement-aware adjustment, where variance in suspicion signals potential subtle attacks
+
+This design reflects real-world safety systems, where diverse evaluators outperform single models under adversarial conditions.
+## Results Visualization
+
+### Success Rate
+![Success](results/success_plot.png)
+
+### Average Reward
+![Reward](results/reward_plot.png)
