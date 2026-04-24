@@ -1,5 +1,17 @@
 # Oversight Arena
 
+**A multi-agent AI safety benchmark where diverse overseers detect subtle, adversarial code vulnerabilities better than any single model.**
+
+> We show that disagreement between evaluators is not noise — it is signal.
+
+- ⚡ FastAPI-based interactive environment  
+- 🧠 Multi-overseer ensemble (precision, recall, speed)  
+- 🔍 CVE-style adversarial patch simulation  
+- 📊 Empirical evaluation + ablation study  
+- 📈 Disagreement-aware decision making  
+
+---
+
 Scalable Oversight Arena is a multi-agent AI safety benchmark where overseer agents detect misaligned worker agents submitting subtle vulnerable code patches.
 
 ## Current Features
