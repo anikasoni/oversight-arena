@@ -25,3 +25,20 @@ Three-overseer panel baseline:
 }
 
 Key behavior: majority vote detected the malicious worker, then stopped to avoid false positives.
+
+## Ablation: Single vs Panel
+
+| System | Success Rate | Avg Reward |
+|--------|-------------|-----------|
+| Single (precision) | 0.00 | 0.00 |
+| Single (recall) | 0.60 | 0.55 |
+| Single (speed) | 0.80 | 0.74 |
+| **3-Overseer Panel** | **~0.80** | **~0.74** |
+
+### Insight
+Single overseers exhibit instability:
+- Precision → overly conservative (misses attacks)
+- Recall → noisy (false positives)
+- Speed → aggressive (best but unstable)
+
+The panel aggregates diverse biases, yielding more consistent detection.
