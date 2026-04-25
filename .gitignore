@@ -17,3 +17,6 @@ checkpoints/
 outputs/
 *.log
 .DS_Store
+
+logs/
+unsloth_compiled_cache/

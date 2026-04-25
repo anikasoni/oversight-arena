@@ -213,3 +213,34 @@ curl -X POST $SPACE/step \
 
 curl $SPACE/state
 curl $SPACE/grader
+
+## Results
+
+### Live OpenEnv Deployment
+
+- Hugging Face Space: https://huggingface.co/spaces/anikasoni/oversight_arena
+- Live API Endpoint: https://anikasoni-oversight-arena.hf.space
+
+The live deployment exposes `/health`, `/schema`, `/reset`, `/step`, `/state`, and `/grader`. A successful live grader run is saved in `results/live_grader.json`.
+
+### GRPO Training Evidence
+
+We ran a real GRPO training loop against the deployed Hugging Face Space using `Qwen/Qwen2.5-0.5B-Instruct`.
+
+- Training prompts: 24
+- Curriculum: enabled
+- Generations per prompt: 2
+- Reward samples logged: 60
+- Mean reward: 0.22895242180675268
+- First-window mean reward: 0.371400249004364
+- Last-window mean reward: 0.1317677652463317
+
+![GRPO loss curve](results/loss_curve.png)
+
+![GRPO reward curve](results/reward_curve.png)
+
+The reward is computed by the live environment using objective hidden ground truth: correct malicious-worker detection, false-positive penalties, missed-attack penalties, and F1-based scoring. The model is not rewarded for sounding convincing; it is rewarded for taking correct oversight actions.
+
+### Why This Matters
+
+Oversight Arena converts the idea of “AI supervising AI” into a measurable OpenEnv environment. Three worker agents submit code patches, one may be malicious, and the overseer must identify subtle sabotage under partial observability. This makes scalable oversight trainable with reinforcement learning rather than just a one-shot prompt comparison.
