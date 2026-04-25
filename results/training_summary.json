@@ -1,0 +1,14 @@
+{
+  "training_run": "GRPO main run",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "environment": "https://anikasoni-oversight-arena.hf.space",
+  "n_prompts": 24,
+  "curriculum": true,
+  "num_generations": 2,
+  "num_reward_samples": 60,
+  "mean_reward": 0.22895242180675268,
+  "first_window_mean_reward": 0.371400249004364,
+  "last_window_mean_reward": 0.1317677652463317,
+  "min_reward": -0.16250000894069672,
+  "max_reward": 1.0
+}
