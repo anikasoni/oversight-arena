@@ -1,3 +1,14 @@
+---
+title: Oversight Arena
+emoji: 🛡️
+colorFrom: indigo
+colorTo: red
+sdk: docker
+app_port: 7860
+pinned: false
+license: mit
+---
+
 # 🛡️ Oversight Arena
 
 **An OpenEnv RLVE environment for training LLM overseers to detect adversarial code submissions.**
