@@ -469,3 +469,24 @@ python scripts/eval_gpt_baseline.py --eval-n 20
 
 Built for the Meta × PyTorch OpenEnv Hackathon 2026.
 Stack: [openenv-core](https://github.com/meta-pytorch/OpenEnv) · [TRL](https://github.com/huggingface/trl) · [PEFT](https://github.com/huggingface/peft) · Qwen-2.5.
+
+## Final Training Result
+
+We ran a real Hugging Face TRL GRPO training run against the live deployed Oversight Arena environment using `Qwen/Qwen2.5-1.5B-Instruct`.
+
+### Held-out evaluation
+
+| Model | Mean reward | Mean F1 | Valid JSON rate |
+|---|---:|---:|---:|
+| Frozen baseline | 0.0875 | 0.2500 | 1.00 |
+| GRPO-trained | 0.1317 | 0.2833 | 1.00 |
+
+**Improvement:** reward increased by +0.0442 and F1 increased by +0.0333 on the same 20 held-out evaluation seeds.
+
+![GRPO loss curve](results/loss_curve.png)
+
+![GRPO reward curve](results/reward_curve.png)
+
+![Baseline vs GRPO evaluation](results/eval_comparison.png)
+
+This is a task-specific improvement claim, not a universal model-quality claim. The result shows that a small open-weight overseer can be specialized through RL for a verifiable scalable-oversight environment.

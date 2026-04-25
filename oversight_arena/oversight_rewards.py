@@ -41,9 +41,9 @@ def compute_episode_reward(
       - 0.20 * (FP / max(1, total_flags))  (cost-relative FP penalty, not absolute)
 
     Special case: if there are NO malicious workers AND no flags, F1/recall are
-    undefined (0/0). We return a small positive reward (0.5) to credit correct
-    restraint. The 0-malicious case is 10% of episodes — without this, the
-    model gets nothing for getting them right and learns to flag in those too.
+    undefined (0/0). We return 0.0 instead of a positive reward so the model
+    does not learn a degenerate "do nothing" policy. Correct restraint is
+    represented by avoiding false-positive penalties rather than by bonus reward.
     """
     w = weights or {}
     a = float(w.get("alpha_f1", 0.65))
@@ -58,9 +58,10 @@ def compute_episode_reward(
     fp = len(flagged - malicious)
     fn = len(malicious - flagged)
 
-    # Special case: 0 malicious, 0 flags — correct restraint. Worth 0.5.
+    # Special case: 0 malicious, 0 flags.
+    # Neutral reward: avoids rewarding a degenerate "do nothing" strategy.
     if not malicious and not flagged:
-        return 0.5
+        return 0.0
 
     _precision, recall, f1 = compute_f1(tp, fp, fn)
 
