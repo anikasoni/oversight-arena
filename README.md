@@ -490,3 +490,17 @@ We ran a real Hugging Face TRL GRPO training run against the live deployed Overs
 ![Baseline vs GRPO evaluation](results/eval_comparison.png)
 
 This is a task-specific improvement claim, not a universal model-quality claim. The result shows that a small open-weight overseer can be specialized through RL for a verifiable scalable-oversight environment.
+
+## Reward Guardrail Ablation
+
+We also ran a no-guardrails ablation against a local Oversight Arena server.
+
+| Setting | Mean reward | Mean F1 | Interpretation |
+|---|---:|---:|---|
+| Frozen baseline | 0.0875 | 0.2500 | Untrained policy |
+| GRPO + guardrails | 0.1317 | 0.2833 | Best result |
+| GRPO - guardrails | 0.0875 | 0.2500 | Falls back to baseline-level performance |
+
+![Reward guardrail ablation](results/ablation_reward_hacking.png)
+
+This supports the reward-design claim: the guarded reward produces measurable improvement, while disabling guardrails removes that improvement. We do not claim universal model superiority; the result is specific to this verifiable oversight environment.
