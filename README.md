@@ -504,3 +504,16 @@ We also ran a no-guardrails ablation against a local Oversight Arena server.
 ![Reward guardrail ablation](results/ablation_reward_hacking.png)
 
 This supports the reward-design claim: the guarded reward produces measurable improvement, while disabling guardrails removes that improvement. We do not claim universal model superiority; the result is specific to this verifiable oversight environment.
+
+## External Reference Baseline: Groq Llama 3.3 70B
+
+We also evaluated `llama-3.3-70b-versatile` through Groq as a zero-shot external reference baseline on 20 held-out seeds.
+
+| Model | Mean reward | Mean F1 | Valid JSON rate |
+|---|---:|---:|---:|
+| GRPO-trained Qwen2.5-1.5B | 0.1317 | 0.2833 | 1.00 |
+| Groq Llama 3.3 70B zero-shot | 0.2242 | 0.2833 | 1.00 |
+
+The trained small Qwen overseer matched the larger Groq-hosted model on mean F1, while Groq achieved higher mean reward. This supports the narrower claim that small open models can be specialized through RL for task-specific oversight behavior, not that they universally outperform larger models.
+
+Groq is used only as an external inference baseline. The trained model in this submission remains the open-weight Qwen overseer trained with Hugging Face TRL GRPO.

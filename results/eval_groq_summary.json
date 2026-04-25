@@ -1,0 +1,13 @@
+{
+  "label": "groq:llama-3.3-70b-versatile",
+  "n": 20,
+  "mean_reward": 0.22416666666666668,
+  "mean_f1": 0.2833333333333333,
+  "valid_json_rate": 1.0,
+  "model": "llama-3.3-70b-versatile",
+  "eval_seeds": [
+    9000,
+    9019
+  ],
+  "difficulty": 0.5
+}
