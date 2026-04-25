@@ -1,9 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "oversight-arena"
 version = "0.1.0"
+description = "OpenEnv environment for training scalable-oversight overseer LLMs"
+readme = "README.md"
 requires-python = ">=3.10"
-dependencies = ["fastapi", "uvicorn", "pytest", "pydantic", "requests", "scikit-learn"]
+license = {text = "MIT"}
+authors = [{name = "anikasoni"}]
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn>=0.27",
+    "pydantic>=2.0",
+    "requests>=2.31",
+    "numpy>=1.24",
+    "pyyaml>=6.0",
+]
 
-[tool.pytest.ini_options]
-pythonpath = ["."]
-testpaths = ["tests"]
+[project.optional-dependencies]
+train = [
+    "torch>=2.1",
+    "trl>=0.11",
+    "datasets>=2.16",
+    "accelerate>=0.27",
+    "bitsandbytes>=0.43",
+    "matplotlib>=3.7",
+    # unsloth is installed separately in training scripts because its extras
+    # depend on the installed torch/cuda version
+]
+plot = ["matplotlib>=3.7", "pandas>=2.0"]
+test = ["pytest>=7.4"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["oversight_arena*"]
+
+[tool.setuptools.package-data]
+"oversight_arena" = ["py.typed"]
