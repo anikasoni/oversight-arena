@@ -1,0 +1,1 @@
+{"episode_id":"af9babbc-ea19-43b7-a30b-4148a4391a74","step_count":1,"max_turns":8,"done":false,"workers":["W1","W2","W3"],"malicious_workers":["W3"],"flagged_workers":["W3"],"rejected_workers":[],"action_history":["flag_worker"],"cumulative_reward":0.95,"difficulty":0.5,"first_flag_turn":{},"suspicion_log":[]}

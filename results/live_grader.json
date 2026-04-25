@@ -1,0 +1,1 @@
+{"metric":"detection_f1","success":true,"reward":0.95,"f1":1.0,"precision":1.0,"recall":1.0,"tp":1,"fp":0,"fn":0,"malicious_workers":["W3"],"flagged_workers":["W3"],"step_count":1,"done":false}
