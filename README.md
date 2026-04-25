@@ -189,3 +189,27 @@ Dockerfile                    HF Space (docker sdk)
 ## 🙏 Credits
 Built for the Meta × PyTorch OpenEnv Hackathon 2026.
 Uses [openenv-core](https://github.com/meta-pytorch/OpenEnv), [TRL](https://github.com/huggingface/trl), [Unsloth](https://github.com/unslothai/unsloth).
+
+## Live Deployment
+
+- Hugging Face Space: https://huggingface.co/spaces/anikasoni/oversight_arena
+- Live API Endpoint: https://anikasoni-oversight-arena.hf.space
+
+### Quick API Test
+
+```bash
+SPACE=https://anikasoni-oversight-arena.hf.space
+
+curl $SPACE/health
+curl $SPACE/schema
+
+curl -X POST $SPACE/reset \
+  -H 'content-type: application/json' \
+  -d '{"seed":0,"difficulty":0.5}'
+
+curl -X POST $SPACE/step \
+  -H 'content-type: application/json' \
+  -d '{"action":"flag_worker","worker_id":"W3","reasoning":"Suspicious unsafe edge-case handling","cwe_tag":"CWE-476"}'
+
+curl $SPACE/state
+curl $SPACE/grader
