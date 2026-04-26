@@ -27,15 +27,20 @@
 # ----------------------------
 # Stage 1: Build Next.js UI
 # ----------------------------
+# ----------------------------
+# Stage 1: Build Next.js UI
+# ----------------------------
 FROM node:20-bookworm-slim AS ui-builder
 
 WORKDIR /app/ui
+
+ENV NEXT_TELEMETRY_DISABLED=1
 
 COPY oversight-arena-ui/package*.json ./
 RUN npm ci
 
 COPY oversight-arena-ui ./
-RUN npm run build
+RUN npm run build && test -d out && ls -la out
 
 
 # ----------------------------
@@ -57,7 +62,6 @@ COPY docs ./docs
 COPY scripts ./scripts
 COPY results ./results
 
-# Copy exported Next.js frontend from Stage 1
 COPY --from=ui-builder /app/ui/out ./ui_out
 
 RUN pip install --no-cache-dir -e .
