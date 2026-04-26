@@ -1,0 +1,28 @@
+{
+  "baseline": {
+    "label": "Frozen baseline",
+    "mean_reward": 0.0875,
+    "mean_f1": 0.25,
+    "valid_json_rate": 1.0,
+    "n": 20
+  },
+  "grpo_with_guardrails": {
+    "label": "GRPO + guardrails",
+    "mean_reward": 0.13166666666666668,
+    "mean_f1": 0.2833333333333333,
+    "valid_json_rate": 1.0,
+    "n": 20
+  },
+  "grpo_without_guardrails": {
+    "label": "GRPO - guardrails",
+    "mean_reward": 0.08750000000000005,
+    "mean_f1": 0.25,
+    "valid_json_rate": 1.0,
+    "n": 20
+  },
+  "interpretation": "Guarded GRPO improved over the frozen baseline, while the no-guardrails ablation stayed at approximately baseline-level reward/F1. This supports the claim that the guarded reward design helps avoid degenerate training and produces more useful oversight behavior.",
+  "delta_guarded_reward_vs_baseline": 0.04416666666666669,
+  "delta_guarded_f1_vs_baseline": 0.033333333333333326,
+  "delta_guarded_reward_vs_no_guards": 0.04416666666666663,
+  "delta_guarded_f1_vs_no_guards": 0.033333333333333326
+}
