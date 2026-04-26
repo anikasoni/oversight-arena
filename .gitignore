@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+unsloth_compiled_cache/
+checkpoints/
+logs/
+*.log
+codedump_*.txt
+.DS_Store
+.env
+.venv/
+venv/
+
+# local/cache junk
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+unsloth_compiled_cache/
+codedump_*.txt
+clean_dump.txt
+.env
+
+# local virtual environment
+/arena/
