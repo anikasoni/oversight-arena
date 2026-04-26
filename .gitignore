@@ -24,3 +24,11 @@ clean_dump.txt
 
 # local virtual environment
 /arena/
+
+# HF Space does not accept binary plots in normal git push
+results/*.png
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.pdf
