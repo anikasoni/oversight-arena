@@ -32,3 +32,49 @@ results/*.png
 *.jpeg
 *.gif
 *.pdf
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+
+# Local Python envs
+/arena/
+.venv/
+venv/
+env/
+
+# Training heavy/local outputs
+checkpoints/
+logs/
+*.log
+
+# Local dumps/secrets
+codedump_*.txt
+codedump.txt
+clean_dump.txt
+.env
+.env.*
+!.env.example
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Frontend local/build junk
+oversight-arena-ui/node_modules/
+oversight-arena-ui/.next/
+oversight-arena-ui/out/
+oversight-arena-ui/.turbo/
+oversight-arena-ui/.env
+oversight-arena-ui/.env.*
+!oversight-arena-ui/.env.example
+
+# Docker/build
+*.tar
+*.zip
