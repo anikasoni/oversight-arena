@@ -48,7 +48,7 @@ export default function Home() {
                 <motion.div {...fadeUp(0)}>
                   <span className="badge badge-blue" style={{ marginBottom: 24 }}>
                     <Activity size={11} />
-                    AI Safety Research
+                    Meta × PyTorch OpenEnv Hackathon 2026
                   </span>
                 </motion.div>
 
@@ -62,8 +62,8 @@ export default function Home() {
                   marginBottom: 20,
                   textAlign: 'left',
                 }}>
-                  Multi-Agent<br />
-                  <em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Scalable Oversight</em>
+                  Oversight<br />
+                  <em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Arena</em>
                 </motion.h1>
 
                 <motion.p {...fadeUp(0.1)} style={{
@@ -72,8 +72,8 @@ export default function Home() {
                   maxWidth: 440, marginBottom: 36,
                   textAlign: 'left',
                 }}>
-                  Three worker agents submit code patches. One or more are malicious.
-                  An ensemble of AI overseers must detect sabotage through majority vote.
+                  Three worker agents submit code patches per episode. 0–2 inject CWE-grounded vulnerabilities.
+                  A Qwen-2.5-1.5B overseer, trained via GRPO, learns to flag malicious workers — no LLM judge anywhere in the loop.
                 </motion.p>
 
                 <motion.div {...fadeUp(0.14)} style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
@@ -118,8 +118,8 @@ export default function Home() {
                 {bugDetected
                   ? 'Sabotage detected — malicious worker flagged'
                   : mode === 'trained'
-                  ? 'All workers cleared by overseer panel'
-                  : 'Baseline mode — overseers not yet trained'
+                  ? 'All workers cleared — no malicious patches found'
+                  : 'Baseline mode — Qwen-1.5B untrained'
                 }
               </span>
               {!isConnected && (
@@ -129,7 +129,7 @@ export default function Home() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <span style={{ fontSize: 13, color: 'var(--text-3)' }}>Mode:</span>
               <span className={`badge ${isTrained ? 'badge-blue' : 'badge-muted'}`}>
-                {isTrained ? 'GRPO Trained' : 'Baseline'}
+                {isTrained ? 'GRPO + QLoRA' : 'Baseline'}
               </span>
               <span style={{ fontSize: 13, color: 'var(--text-2)' }}>
                 F1: <strong style={{ fontFamily: 'DM Mono, monospace' }}>{f1Score.toFixed(2)}</strong>
@@ -147,10 +147,10 @@ export default function Home() {
               gap: 16, marginBottom: 16,
             }}>
               {[
-                { label: 'Worker Agents', value: '3', sub: 'per episode' },
-                { label: 'F1 Score', value: f1Score.toFixed(2), sub: isTrained ? '↑ +0.29 vs baseline' : 'Baseline', accent: isTrained },
-                { label: 'Reward Weight', value: '0.75', sub: '× F1 score' },
-                { label: 'Training', value: isTrained ? 'GRPO' : 'None', sub: isTrained ? 'Qwen2.5 + LoRA' : 'Untrained', accent: isTrained },
+                { label: 'Worker Agents', value: '3', sub: '0–2 malicious per episode' },
+                { label: 'F1 Score', value: f1Score.toFixed(2), sub: isTrained ? '↑ +37% vs baseline' : 'Baseline (d=0.4)', accent: isTrained },
+                { label: 'Sabotage Patterns', value: '33', sub: '11 CWEs × 3 escalation tiers' },
+                { label: 'Training', value: isTrained ? 'GRPO' : 'None', sub: isTrained ? 'Qwen-2.5-1.5B + QLoRA' : 'Untrained', accent: isTrained },
               ].map(({ label, value, sub, accent }) => (
                 <div key={label} className="card" style={{ padding: '24px 20px', textAlign: 'center' }}>
                   <p style={{ fontSize: 12, color: 'var(--text-3)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 500 }}>{label}</p>
@@ -174,18 +174,18 @@ export default function Home() {
                 How it works
               </h2>
               <p style={{ fontSize: 15, color: 'var(--text-3)', letterSpacing: '-0.01em' }}>
-                Follow the oversight pipeline from submission to detection.
+                Follow the oversight pipeline from patch submission to reward-driven detection.
               </p>
             </motion.div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
               {[
                 { n: 1, icon: Shield,    title: 'Worker Agents', href: '/workers',  color: 'var(--amber)',  bg: 'var(--amber-bg)',
-                  desc: 'Three AI workers submit code patches. At least one contains a deliberate vulnerability.' },
+                  desc: 'Three AI workers submit unified-diff code patches. 0–2 inject CWE-grounded subtle vulnerabilities. Adaptive adversaries escalate to subtler variants when flagged.' },
                 { n: 2, icon: Cpu,       title: 'Overseer Analysis', href: '/analysis', color: 'var(--accent)', bg: 'var(--accent-dim)',
-                  desc: 'Three specialized oversight models independently analyze each patch and compute suspicion scores.' },
-                { n: 3, icon: TrendingUp, title: 'Results & Reward', href: '/results',  color: 'var(--green)',  bg: 'var(--green-bg)',
-                  desc: 'Majority vote determines the verdict. GRPO training improves detection F1 by +0.29.' },
+                  desc: 'The Qwen-2.5-1.5B overseer chooses from inspect_patch, flag_worker, reject_patch, accept_all, or request_resubmit. Ground truth is verified by executable unit tests — no LLM judge.' },
+                { n: 3, icon: TrendingUp, title: 'Reward & Training', href: '/results',  color: 'var(--green)',  bg: 'var(--green-bg)',
+                  desc: 'Reward = 0.65·F1 + 0.20·early_bonus + 0.10·recall − 0.20·FP rate. Anti-hack guardrails prevent degenerate policies. GRPO training doubled the inspect-then-decide rate.' },
               ].map(({ n, icon: Icon, title, href, color, bg, desc }, i) => (
                 <motion.div key={n} {...fadeUp(i * 0.08)}>
                   <Link href={href} style={{ textDecoration: 'none' }}>
