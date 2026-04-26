@@ -71,14 +71,14 @@ Both independent runs improved F1. The trained 1.5B model reaches **~86% of Groq
 
 The trained model inspects **2× more** before committing — an inspect-then-decide policy replacing instinct-reject. This policy shift is observable directly in the eval CSVs.
 
-![Final comparison](results/final_comparison.png)
+![Final comparison](results/final_comparison.svg)
 
 ### Training curves (Run 2 — committed results)
 
 Training reward mean: **+0.118** across 192 logged steps (first window 0.082 → last window 0.144).
 
-![Reward curve](results/reward_curve.png)
-![Loss curve](results/loss_curve.png)
+![Reward curve](results/reward_curve.svg)
+![Loss curve](results/loss_curve.svg)
 
 ### Reward-guardrail ablation
 
@@ -203,8 +203,8 @@ accept_all when malicious exists → −0.5  (prevents silent-coward policy)
 | pytest suite | `tests/test_env_server.py` | ✅ 19 passing |
 | Training log | `results/grpo_log_history.json` | ✅ 192 steps |
 | Training summary | `results/training_summary.json` | ✅ |
-| Loss / reward curves | `results/loss_curve.png`, `results/reward_curve.png` | ✅ |
-| Eval comparison | `results/final_comparison.png` | ✅ |
+| Loss / reward curves | `results/loss_curve.svg`, `results/reward_curve.svg` | ✅ |
+| Eval comparison | `results/final_comparison.svg` | ✅ |
 | Ablation | `results/ablation_summary.json` | ✅ |
 | Groq baseline | `results/eval_groq.csv` | ✅ |
 
@@ -293,14 +293,14 @@ Both independent GRPO runs improved F1 at d=0.4. The trained 1.5B model reaches 
 
 GRPO produced a more deliberate policy: the trained model inspects 2× more before committing. This **inspect-then-decide** behaviour is the learned change — confirmed by action distribution shift in the eval CSVs.
 
-![Final comparison](results/final_comparison.png)
+![Final comparison](results/final_comparison.svg)
 
 ### Training evidence
 
 Training reward was consistently positive (mean +0.10, first-window mean +0.19). Previous runs with the broken reward floor converged to `accept_all` (silent-coward policy). After fixing `accept_all-when-malicious` to return −0.5 instead of 0.0, the model engaged with the task instead of hiding.
 
-![Reward curve](results/reward_curve.png)
-![Loss curve](results/loss_curve.png)
+![Reward curve](results/reward_curve.svg)
+![Loss curve](results/loss_curve.svg)
 
 ### Why d=0.4 is the signal tier
 

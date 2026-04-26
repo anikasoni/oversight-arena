@@ -30,7 +30,7 @@ export default function NavBar() {
             display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
             <Image
-              src="/logo(1).png"
+              src="/logo(1).svg"
               alt="Oversight Arena"
               width={28}
               height={28}
